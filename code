@@ -1,0 +1,20 @@
+#define BLYNK_PRINT Serial            
+#include <BlynkSimpleEsp8266.h> 
+char auth[] = "YOUR_AUTH_TOKEN";  // Set your Auth Token here
+char ssid[] = "YOUR_WIFI_SSID";  // Set your WiFi SSID here
+char pass[] = "YOUR_WIFI_PASSWORD";  // Set your WiFi password here
+
+BlynkTimer timer;
+WidgetLED led1(V1);
+
+void setup() {
+  Serial.begin(9600);
+  Blynk.begin(auth, ssid, pass);
+  
+  pinMode(D1, OUTPUT);  // Set D1 pin as output to control the relay module
+}
+
+void loop() {
+  Blynk.run();
+  timer.run();
+}
